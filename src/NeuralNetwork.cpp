@@ -40,54 +40,6 @@ NeuralNetwork::NeuralNetwork(std::vector<unsigned int> L)
 	}
 	
 	m_weights = weights;
-	
-	//########################  ---> à déplacer dans .train()
-	
-// 	Matrix input(1,1);
-// 	Matrix output(1,1);
-// 	
-// 	for(int i = 0; i < 10000; ++i)
-// 	{
-// 		float cost = 0.f;
-// 		
-// 		input.setCoeff(0, 0, 0.f);
-// 		output.setCoeff(0, 0, 0.9);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		input.setCoeff(0, 0, 0.2);
-// 		output.setCoeff(0, 0, 0.1);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		input.setCoeff(0, 0, 0.4);
-// 		output.setCoeff(0, 0, 0.9);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		input.setCoeff(0, 0, 0.6);
-// 		output.setCoeff(0, 0, 0.1);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		input.setCoeff(0, 0, 0.8);
-// 		output.setCoeff(0, 0, 0.9);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		input.setCoeff(0, 0, 1.f);
-// 		output.setCoeff(0, 0, 0.1);
-// 		
-// 		feedForward(input);
-// 		cost += backPropagation(output);
-// 		
-// 		std::cout << "COST = " << cost/6.f << std::endl;
-// 	}
 }
 
 Matrix NeuralNetwork::feedForward(const Matrix& input) const
@@ -137,9 +89,6 @@ float NeuralNetwork::backPropagation(const Matrix& outputExpected)
 	
 	// Calcul des DW, DB et DA
 	//Initialisation : 
-	
-// 	std::vector<Matrix*> DB_vect;
-// 	std::vector<Matrix*> DW_vect;
 	
 	Matrix z = (*m_weights[size_weights - 1])*m_layers[size_layers - 2]->getValueMatrix() + m_layers[size_layers - 1]->getBiaisMatrix();
 	z.applySigmoPrime();
@@ -218,7 +167,7 @@ void NeuralNetwork::train(const std::vector<std::vector<float>>& inputs, const s
 			feedForward(input);
 			cost += backPropagation(output);
 		}
-		std::cout << "COST = " << cost/size << std::endl;
+// 		std::cout << "COST = " << cost/size << std::endl;
 	}
 }
 

@@ -6,17 +6,18 @@ int main()
 {
 	try
 	{
-		std::vector<unsigned int> layers{2, 5, 4, 1};
+		std::vector<unsigned int> layers{2, 15, 12, 1};
 		NeuralNetwork nn(layers);
 		
 		std::vector<std::vector<float>> inputs{
+			std::vector<float>{0.5, 0.6},
 			std::vector<float>{0.2, 0.4},
 			std::vector<float>{0.1, 0.7},
 			std::vector<float>{0.4, 0.1},
 			std::vector<float>{0.9, 0.3},
 			std::vector<float>{0.8, 0.6},
-			std::vector<float>{1., 0.f},
-			std::vector<float>{0.f, 1.f},
+			std::vector<float>{0.9, 0.1},
+			std::vector<float>{0.2, 0.8},
 			std::vector<float>{0.6, 0.1},
 			std::vector<float>{0.6, 0.2},
 			std::vector<float>{0.2, 0.2},
@@ -26,7 +27,9 @@ int main()
 			std::vector<float>{0.5, 0.4},
 			std::vector<float>{0.6, 0.9},
 			std::vector<float>{0.5, 0.8},
-			std::vector<float>{0.3, 0.9}
+			std::vector<float>{0.3, 0.9},
+			std::vector<float>{0.1, 0.1},
+			std::vector<float>{0.4, 0.5},
 		};
 		
 		std::vector<std::vector<float>> outputs{
@@ -40,6 +43,9 @@ int main()
 			std::vector<float>{1.f},
 			std::vector<float>{1.f},
 			std::vector<float>{1.f},
+			std::vector<float>{1.f},
+			std::vector<float>{0.f},
+			std::vector<float>{0.f},
 			std::vector<float>{0.f},
 			std::vector<float>{0.f},
 			std::vector<float>{0.f},
