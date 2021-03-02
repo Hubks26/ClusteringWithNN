@@ -1,9 +1,9 @@
 #include "Game.h"
 
-const sf::Time Game::m_timePerFrame = sf::seconds(1.f/100.f);
+const sf::Time Game::m_timePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game(Features feat, NeuralNetwork nn)
-: m_window(sf::VideoMode(600, 600), "Neural Network")
+: m_window(sf::VideoMode(1920, 1080), "Neural Network", sf::Style::Fullscreen)
 , m_nn(nn)
 , m_feat(feat)
 , m_field(Field(nn))
@@ -36,7 +36,7 @@ void Game::processEvents()
 	while (m_window.pollEvent(event))
 	{
 		
-		if (event.type == sf::Event::Closed)
+		if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
 			m_window.close();
 	}
 }

@@ -2,7 +2,7 @@
 
 Field::Field(NeuralNetwork nn)
 : m_nn(nn)
-, m_res(60)
+, m_res(100)
 {
 }
 
@@ -61,17 +61,16 @@ void Field::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::RectangleShape rectangle;
 	rectangle.setSize(sf::Vector2f((target.getSize().x+1.f)/m_res, (target.getSize().y+1.f)/m_res));
-	sf::FloatRect rect = rectangle.getLocalBounds();
-	rectangle.setOrigin({rect.width/2.f, rect.height/2.f});
+
 	float value;
 	
-	for (std::size_t i = 0; i <= m_res; ++i)
+	for (std::size_t i = 0; i < m_res; ++i)
 	{
-		for (std::size_t j = 0; j <= m_res; ++j)
+		for (std::size_t j = 0; j < m_res; ++j)
 		{
-			rectangle.setPosition(i*target.getSize().x/m_res, j*target.getSize().y/m_res);
+			rectangle.setPosition((i*target.getSize().x+1.f)/m_res, (j*target.getSize().y+1.f)/m_res);
 			value = m_nn.predict(float(i)/float(m_res), float(j)/float(m_res));
-			rectangle.setFillColor(sf::Color(value*200, 0, (1-value)*200, 100));
+			rectangle.setFillColor(sf::Color(value*120, 0, (1-value)*120));
 			target.draw(rectangle, states);
 		}
 	}

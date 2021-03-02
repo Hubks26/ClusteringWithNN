@@ -9,7 +9,7 @@ Features::Features(const std::vector<std::vector<float>>& positions, const std::
 void Features::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	sf::CircleShape circle;
-	circle.setRadius(3.f);
+	circle.setRadius(target.getSize().y/200.f);
 	sf::FloatRect rect = circle.getLocalBounds();
 	circle.setOrigin({rect.width/2.f, rect.height/2.f});
 	
