@@ -6,7 +6,7 @@ int main()
 {
 	try
 	{
-		std::vector<unsigned int> layers{2, 20, 16, 1};
+		std::vector<unsigned int> layers{2, 8, 6, 1};
 		NeuralNetwork nn(layers);
 		
 		Features features(30);

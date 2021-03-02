@@ -5,7 +5,7 @@ Field::Field(NeuralNetwork nn, Features features)
 , m_features(features)
 , m_inputs(features.getInputs())
 , m_outputs(features.getOutputs())
-, m_res(65)
+, m_res(100)
 {
 }
 
