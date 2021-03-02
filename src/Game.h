@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Features.h"
 #include "Field.h"
 
 class Game
@@ -23,7 +22,6 @@ private :
 	static const sf::Time m_timePerFrame;
 	
 	NeuralNetwork m_nn;
-	Features m_feat;
 	Field m_field;
 };
 

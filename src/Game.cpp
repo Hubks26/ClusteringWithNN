@@ -3,10 +3,9 @@
 const sf::Time Game::m_timePerFrame = sf::seconds(1.f/60.f);
 
 Game::Game(Features feat, NeuralNetwork nn)
-: m_window(sf::VideoMode(1920, 1080), "Neural Network", sf::Style::Fullscreen)
+: m_window(sf::VideoMode(1000, 1000), "Neural Network", sf::Style::Fullscreen)
 , m_nn(nn)
-, m_feat(feat)
-, m_field(Field(nn))
+, m_field(Field(nn, feat))
 {
 }
 
@@ -50,6 +49,5 @@ void Game::render()
 {
 	m_window.clear();
 	m_window.draw(m_field);
-	m_window.draw(m_feat);
 	m_window.display();
 }

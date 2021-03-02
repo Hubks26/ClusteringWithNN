@@ -1,60 +1,17 @@
 #include "Field.h"
 
-Field::Field(NeuralNetwork nn)
+Field::Field(NeuralNetwork nn, Features features)
 : m_nn(nn)
-, m_res(100)
+, m_features(features)
+, m_inputs(features.getInputs())
+, m_outputs(features.getOutputs())
+, m_res(65)
 {
 }
 
 void Field::update()
 {
-	std::vector<std::vector<float>> inputs{
-			std::vector<float>{0.5, 0.6},
-			std::vector<float>{0.2, 0.4},
-			std::vector<float>{0.1, 0.7},
-			std::vector<float>{0.4, 0.1},
-			std::vector<float>{0.9, 0.3},
-			std::vector<float>{0.8, 0.6},
-			std::vector<float>{0.9, 0.1},
-			std::vector<float>{0.2, 0.8},
-			std::vector<float>{0.6, 0.1},
-			std::vector<float>{0.6, 0.2},
-			std::vector<float>{0.2, 0.2},
-			std::vector<float>{0.7, 0.5},
-			std::vector<float>{0.3, 0.6},
-			std::vector<float>{0.4, 0.4},
-			std::vector<float>{0.5, 0.4},
-			std::vector<float>{0.6, 0.9},
-			std::vector<float>{0.5, 0.8},
-			std::vector<float>{0.3, 0.9},
-			std::vector<float>{0.1, 0.1},
-			std::vector<float>{0.4, 0.5}
-		};
-	
-	std::vector<std::vector<float>> outputs{
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{1.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f},
-			std::vector<float>{0.f}
-		};
-		
-	m_nn.train(inputs, outputs, 1);
+	m_nn.train(m_inputs, m_outputs, 1);
 }
 
 void Field::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -74,4 +31,5 @@ void Field::draw(sf::RenderTarget& target, sf::RenderStates states) const
 			target.draw(rectangle, states);
 		}
 	}
+	target.draw(m_features, states);
 }
